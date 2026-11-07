@@ -1,0 +1,50 @@
+{
+  "link.title.Docs": {
+    "message": "文档",
+    "description": "The title of the footer links column with title=Docs in the footer"
+  },
+  "link.title.Project": {
+    "message": "项目",
+    "description": "The title of the footer links column with title=Project in the footer"
+  },
+  "link.title.Upstream": {
+    "message": "上游",
+    "description": "The title of the footer links column with title=Upstream in the footer"
+  },
+  "link.item.label.Getting started": {
+    "message": "快速上手",
+    "description": "The label of footer link with label=Getting started"
+  },
+  "link.item.label.Guides": {
+    "message": "指南",
+    "description": "The label of footer link with label=Guides"
+  },
+  "link.item.label.Developers": {
+    "message": "开发者",
+    "description": "The label of footer link with label=Developers"
+  },
+  "link.item.label.Application": {
+    "message": "应用",
+    "description": "The label of footer link with label=Application"
+  },
+  "link.item.label.Documentation": {
+    "message": "文档",
+    "description": "The label of footer link with label=Documentation"
+  },
+  "link.item.label.Issues": {
+    "message": "问题反馈",
+    "description": "The label of footer link with label=Issues"
+  },
+  "link.item.label.MoeMail": {
+    "message": "MoeMail",
+    "description": "The label of footer link with label=MoeMail"
+  },
+  "link.item.label.MoeMail docs": {
+    "message": "MoeMail 文档",
+    "description": "The label of footer link with label=MoeMail docs"
+  },
+  "link.copyright": {
+    "message": "版权所有 © {year} NextMail。基于 GPL-3.0 授权。",
+    "description": "The copyright notice"
+  }
+}

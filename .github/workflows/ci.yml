@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: 构建与校验
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: 安装依赖
+        run: npm ci --ignore-scripts
+
+      - name: 生成 Fluent 设计令牌
+        run: npm run tokens:generate
+
+      - name: 校验 Fluent 令牌与源码一致
+        run: git diff --exit-code -- src/css/fluent-tokens.css
+
+      - name: 类型检查
+        run: npm run typecheck
+
+      - name: 构建站点
+        run: npx docusaurus build
+
+      - name: 校验构建产物
+        run: |
+          test -f build/index.html
+          test -f build/en/index.html
+          test -f build/zh-CN/index.html
+          test -f build/en/getting-started/overview.html
+          test -f build/zh-CN/getting-started/overview.html
+          test -f build/search-index.json
+
+      - name: 上传构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-site
+          path: build/
+          retention-days: 7

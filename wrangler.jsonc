@@ -1,0 +1,30 @@
+{
+  // Cloudflare Workers 部署配置。
+  //
+  // 文档站主体是纯静态产物（Docusaurus SSG），由静态资源服务直接分发：
+  //   - build/en/      英文（默认语种）
+  //   - build/zh-CN/   简体中文
+  //
+  // 站点根路径 `/` 属于站点本身而不属于任何语言，因此 Docusaurus 不会为它生成
+  // 文件。src/worker/index.ts 负责按 Accept-Language 把 `/` 302 到 `/en/` 或
+  // `/zh-CN/`，并提供 `/languages` 手动选择页。
+  //
+  // 部署命令：npm run deploy:cloudflare
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "nextmail-docs",
+  "compatibility_date": "2025-04-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "src/worker/index.ts",
+
+  "assets": {
+    "directory": "./build",
+    "binding": "ASSETS",
+    // 每个语言目录各有独立的 404.html（build/en/404.html、build/zh-CN/404.html），
+    // 未命中资源的请求返回最近一级目录下的 404 页。
+    "not_found_handling": "404-page"
+  },
+
+  "observability": {
+    "enabled": true
+  }
+}

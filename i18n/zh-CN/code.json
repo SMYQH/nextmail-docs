@@ -1,0 +1,104 @@
+{
+  "theme.docs.sidebar.expandButtonTitle": {
+    "message": "展开侧边栏"
+  },
+  "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "收起侧边栏"
+  },
+  "theme.docs.sidebar.backButtonLabel": {
+    "message": "返回"
+  },
+  "theme.docs.paginator.navPrev": {
+    "message": "上一篇"
+  },
+  "theme.docs.paginator.navNext": {
+    "message": "下一篇"
+  },
+  "theme.docs.paginator.paginationLabel": {
+    "message": "第 {page} 页，共 {pages} 页"
+  },
+  "theme.docs.paginator.previous": {
+    "message": "上一页"
+  },
+  "theme.docs.paginator.next": {
+    "message": "下一页"
+  },
+  "theme.common.editThisPage": {
+    "message": "编辑此页"
+  },
+  "theme.common.docs.sidebar.expand": {
+    "message": "展开"
+  },
+  "theme.common.docs.sidebar.collapse": {
+    "message": "收起"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "跳到主要内容"
+  },
+  "theme.common.SearchBar.label": {
+    "message": "搜索"
+  },
+  "theme.SearchBar.noResultsText": {
+    "message": "没有找到结果："
+  },
+  "theme.SearchBar.searchInputAriaLabel": {
+    "message": "搜索"
+  },
+  "theme.SearchBar.clearButtonAriaLabel": {
+    "message": "清除"
+  },
+  "theme.SearchBar.cancelButtonAriaLabel": {
+    "message": "取消"
+  },
+  "theme.SearchBar.submitButtonAriaLabel": {
+    "message": "搜索"
+  },
+  "theme.SearchBar.openInNewWindowText": {
+    "message": "在新窗口打开（{newWindowText}）"
+  },
+  "theme.SearchBar.enterKeyHint": {
+    "message": "回车"
+  },
+  "theme.SearchBar.closeButtonAriaLabel": {
+    "message": "关闭"
+  },
+  "theme.SearchBar.seeAll": {
+    "message": "查看全部 {count} 个结果"
+  },
+  "theme.NotFound.title": {
+    "message": "页面未找到"
+  },
+  "theme.NotFound.p1": {
+    "message": "找不到你要访问的页面。"
+  },
+  "theme.NotFound.p2": {
+    "message": "请联系站点的所有者，他可能已经删除或移动了这个页面。"
+  },
+  "theme.NotFound.backHome": {
+    "message": "返回首页"
+  },
+  "theme.lastUpdated.atDate": {
+    "message": "最后更新于 {date}"
+  },
+  "theme.lastUpdated.by": {
+    "message": "由 {author} 更新"
+  },
+  "theme.docs.breadcrumbs.home": {
+    "message": "首页"
+  },
+  "theme.docs.tocButton.label": {
+    "message": "本页目录"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "版本 {versionLabel}"
+  },
+  "theme.docs.versionDropdown.versionsLabel": {
+    "message": "版本"
+  },
+  "theme.NavBar.toggleSidebar.ariaLabel": {
+    "message": "切换导航栏"
+  },
+  "theme.NotFound.title": {
+    "message": "页面未找到"
+  }
+}
