@@ -16,10 +16,15 @@ sidebar_position: 4
 ## Setup
 
 ```bash
-git clone https://github.com/SMYQH/nextmail.git
+git clone --recurse-submodules https://github.com/SMYQH/nextmail.git
 cd nextmail
 npm ci
 ```
+
+The documentation site is included as the `docs` Git submodule. If you already
+cloned the application without submodules, initialize it from the repository
+root with `git submodule update --init docs`. The application can run without
+the submodule, but its documentation source will not be available locally.
 
 ### Binding templates
 

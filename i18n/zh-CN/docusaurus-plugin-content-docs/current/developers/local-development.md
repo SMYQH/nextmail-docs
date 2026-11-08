@@ -15,10 +15,14 @@ sidebar_position: 4
 ## 准备
 
 ```bash
-git clone https://github.com/SMYQH/nextmail.git
+git clone --recurse-submodules https://github.com/SMYQH/nextmail.git
 cd nextmail
 npm ci
 ```
+
+文档站以 Git 子模块的形式放在 `docs` 目录中。若已在未初始化子模块的情况下克隆应用，
+请在仓库根目录运行 `git submodule update --init docs`。不检出该子模块也能运行应用，
+但本地不会包含文档源文件。
 
 ### 绑定模板
 

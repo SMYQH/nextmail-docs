@@ -16,7 +16,7 @@ const config: Config = {
   tagline: 'Self-hosted temporary email on Cloudflare — OpenAPI-first.',
   favicon: 'img/logo.png',
 
-  url: process.env.DOCS_SITE_URL ?? 'https://docs.nextmail.app',
+  url: process.env.DOCS_SITE_URL?.trim() || 'https://docs.nextmail.app',
   baseUrl: '/',
 
   organizationName: 'SMYQH',
