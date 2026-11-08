@@ -31,7 +31,6 @@
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
-    "@docusaurus/tsconfig": "3.10.2",
     "@docusaurus/types": "3.10.2",
     "typescript": "~5.9.3",
     "wrangler": "^4.149.0"

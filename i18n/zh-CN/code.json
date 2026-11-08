@@ -63,7 +63,7 @@
     "message": "关闭"
   },
   "theme.SearchBar.seeAll": {
-    "message": "查看全部 {count} 个结果"
+    "message": "查看全部结果"
   },
   "theme.NotFound.title": {
     "message": "页面未找到"
@@ -97,8 +97,5 @@
   },
   "theme.NavBar.toggleSidebar.ariaLabel": {
     "message": "切换导航栏"
-  },
-  "theme.NotFound.title": {
-    "message": "页面未找到"
   }
 }

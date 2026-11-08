@@ -35,7 +35,7 @@ cp .env.deploy.example .env.deploy
 | `CLOUDFLARE_ACCOUNT_ID` | 你的 Cloudflare 账号 ID |
 | `CLOUDFLARE_API_TOKEN` | 具备下述权限的 API Token |
 | `AUTH_SECRET` | 用于签名会话的随机密钥（`openssl rand -base64 32`） |
-| `EMAIL_DOMAIN` | 收件域名，例如 `mail.example.com` |
+| `EMAIL_DOMAIN` | 用于收件的 Cloudflare Zone 根域名，例如 `example.com` |
 | `NEXT_PUBLIC_BASE_URL` | 部署的公开地址，例如 `https://mail.example.com` |
 
 可选的 OAuth 登录（GitHub 或 Google）在提供商的 ID 和 Secret 都填写后才生效，
@@ -86,12 +86,34 @@ npm run deploy
 使用自定义域名时，脚本会自动创建 Worker 路由和证书。否则部署可通过
 `*.workers.dev` 访问。
 
-接下来配置[邮件路由](/getting-started/email-domain)，让邮件真正进入 NextMail。
+部署脚本会为 `EMAIL_DOMAIN` 对应的 Zone 启用 Catch-all 规则，并将其指向 Email
+Worker。发送测试邮件前，请先在 Cloudflare 控制台启用邮件路由并接受所需的 DNS
+记录。添加其他收件域名时，请按照[邮箱域名与邮件路由](/getting-started/email-domain)
+为每个 Zone 单独配置。`EMAIL_DOMAIN` 必须与 Cloudflare Zone 名称完全一致；如果账号
+中的 Zone 是 `example.com`，就不能把 `mail.example.com` 填在这里。
 
 ## 5. 创建第一个账号
 
 打开部署地址，登录后进入个人中心页面。如果站点还没有皇帝，页面会显示
 **初始化站点所有者**——确认后，第一个账号即成为拥有全部站点设置权限的皇帝。
+
+## 验证部署结果
+
+分别检查以下三个环节：
+
+1. **应用可以访问**——打开 `NEXT_PUBLIC_BASE_URL` 并登录。
+2. **已经配置收件域名**——打开个人中心，确认站点设置中出现收件域名。公开配置
+   接口也应该返回 JSON：
+
+   ```bash
+   curl -fsS https://mail.example.com/api/config
+   ```
+
+3. **邮件已经完成路由**——向收件域名下的任意地址发送测试邮件，确认它出现在
+   Catch-all 邮箱，或出现在拥有该地址的邮箱中。
+
+应用地址和收件域名可以是不同的主机名。能够成功登录只说明 Web Worker 可访问，
+并不能证明 Cloudflare 邮件路由已经把邮件转发给 Email Worker。
 
 ## 也可以用 GitHub Actions 部署
 

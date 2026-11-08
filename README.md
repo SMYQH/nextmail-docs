@@ -2,15 +2,12 @@
 
 NextMail 的官方文档站，基于 [Docusaurus 3](https://docusaurus.io/) 构建。
 
-- **英文**（默认语种）：<https://docs.nextmail.app/en/>
-- **简体中文**：<https://docs.nextmail.app/zh-CN/>
-
 文档站与应用仓库分离：[SMYQH/nextmail-docs](https://github.com/SMYQH/nextmail-docs)
 是本仓库，[SMYQH/nextmail](https://github.com/SMYQH/nextmail) 是应用本体。
 
 ## 文档结构
 
-站点提供两条阅读路径，面向不同读者：
+站点提供多条阅读路径，面向不同读者：
 
 | 目录 | 读者 | 内容 |
 | --- | --- | --- |
@@ -94,29 +91,6 @@ GitHub Actions 会在推送到 `main` 或 `v*` 标签时自动构建并发布，
 
 在 Cloudflare 控制台为 `nextmail-docs` Worker 绑定自定义域名，或在
 `wrangler.jsonc` 中增加 `routes` 配置。
-
-## 版本化文档（预留）
-
-`versions.json` 目前为空数组，尚未发布任何版本。发布新版本：
-
-```bash
-npm run docusaurus docs:version 1.0.0
-```
-
-该命令会生成 `versioned_docs/version-1.0.0/` 与
-`versioned_sidebars/version-1.0.0.json`，并把版本追加到 `versions.json`。中文
-翻译放在 `i18n/zh-CN/docusaurus-plugin-content-docs/version-1.0.0/`。
-
-## 贡献
-
-提交信息使用中文并遵循 Conventional Commits，例如：
-
-```
-docs: 补充 Webhook 重试策略说明
-```
-
-请在修改后运行 `npm run build` 确认站点能正常构建——CI 使用
-`onBrokenLinks: 'throw'`，断链会导致构建失败。
 
 ## 许可证
 

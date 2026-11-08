@@ -25,28 +25,35 @@ function useLabels() {
 
 export function HomeHero(): React.JSX.Element {
   const labels = useLabels();
+  const previewSrc = useBaseUrl('/img/preview.png');
 
   return (
     <header className="fluent-hero">
-      <div className="container">
-        <p className="fluent-hero__eyebrow">{labels.heroEyebrow}</p>
-        <h1 className="fluent-hero__title">{labels.heroTitle}</h1>
-        <p className="fluent-hero__subtitle">{labels.heroSubtitle}</p>
-        <div className="fluent-hero__actions">
-          <Link className="button button--primary button--lg" to="/getting-started/quick-deploy">
-            <RocketRegular style={{ marginRight: 8, verticalAlign: 'middle' }} />
-            {labels.heroPrimaryCta}
-          </Link>
-          <Link className="button button--outline button--lg" to="/developers/openapi">
-            {labels.heroSecondaryCta}
-            <ArrowRightRegular style={{ marginLeft: 8, verticalAlign: 'middle' }} />
-          </Link>
+      <div className="container fluent-hero__layout">
+        <div className="fluent-hero__copy">
+          <p className="fluent-hero__eyebrow">{labels.heroEyebrow}</p>
+          <h1 className="fluent-hero__title">{labels.heroTitle}</h1>
+          <p className="fluent-hero__subtitle">{labels.heroSubtitle}</p>
+          <div className="fluent-hero__actions">
+            <Link className="button button--primary button--lg" to="/getting-started/quick-deploy">
+              <RocketRegular style={{ marginRight: 8, verticalAlign: 'middle' }} />
+              {labels.heroPrimaryCta}
+            </Link>
+            <Link className="button button--outline button--lg" to="/developers/openapi">
+              {labels.heroSecondaryCta}
+              <ArrowRightRegular style={{ marginLeft: 8, verticalAlign: 'middle' }} />
+            </Link>
+          </div>
         </div>
+        <figure className="fluent-hero__visual">
+          <div className="fluent-hero__visual-frame">
+            <img src={previewSrc} alt={labels.previewAlt} width={1440} height={900} />
+          </div>
+        </figure>
       </div>
     </header>
   );
 }
-
 export function HomePaths(): React.JSX.Element {
   const labels = useLabels();
 
@@ -96,7 +103,6 @@ export function HomePaths(): React.JSX.Element {
     </section>
   );
 }
-
 export function HomeFeatures(): React.JSX.Element {
   const labels = useLabels();
 
@@ -117,21 +123,6 @@ export function HomeFeatures(): React.JSX.Element {
             </article>
           );
         })}
-      </div>
-    </section>
-  );
-}
-
-export function HomePreview(): React.JSX.Element {
-  const labels = useLabels();
-  const previewSrc = useBaseUrl('/img/preview.png');
-
-  return (
-    <section className="container fluent-section">
-      <div className="fluent-media">
-        <div className="fluent-media__frame">
-          <img src={previewSrc} alt={labels.previewAlt} width={1280} height={720} />
-        </div>
       </div>
     </section>
   );

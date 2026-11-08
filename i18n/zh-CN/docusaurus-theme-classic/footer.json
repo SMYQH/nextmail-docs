@@ -43,8 +43,8 @@
     "message": "MoeMail 文档",
     "description": "The label of footer link with label=MoeMail docs"
   },
-  "link.copyright": {
-    "message": "版权所有 © {year} NextMail。基于 GPL-3.0 授权。",
-    "description": "The copyright notice"
+  "copyright": {
+    "message": "Copyright © {year} SMYQH。基于 AGPL-3.0 授权。",
+    "description": "The footer copyright"
   }
 }

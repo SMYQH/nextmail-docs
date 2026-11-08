@@ -36,7 +36,10 @@ zone and open **Email** → **Email Routing**.
 
 ![Enable email routing](/img/docs/enable-email-routing.jpg "Enable email routing in Cloudflare")
 
-3. Open **Routing rules** and edit the **Catch-all address**:
+3. A full `npm run deploy` automatically points the catch-all rule for
+   `EMAIL_DOMAIN` at the NextMail Email Worker. For an additional receiving
+   domain, or to repair the rule manually, open **Routing rules** and edit the
+   **Catch-all address**:
    - **Action**: *Send to a Worker*
    - **Destination**: the `email-receiver-worker` deployed by NextMail
    - **Save**
@@ -77,7 +80,9 @@ Important behaviour:
 
 You can serve several domains from one deployment. Each of them needs its own
 Email Routing rule pointing at the Email Worker; the deployment script only
-configures the zone of `EMAIL_DOMAIN` automatically.
+configures the zone of `EMAIL_DOMAIN` automatically. Each receiving domain must
+match a Cloudflare zone name; the deployment script rejects a subdomain of a
+zone because Email Routing catch-all rules are configured at the zone apex.
 
 The Emperor can also restrict which domains a given user may create mailboxes
 in. Users without an explicit restriction inherit all site domains; clearing
@@ -95,6 +100,6 @@ catch-all action really points at `email-receiver-worker`, and that DNS for the
 zone is managed by Cloudflare.
 
 **I receive mail for the wrong domain**
-: `EMAIL_DOMAIN` must exactly match a zone name in your account. When you use a
-subdomain, configure Email Routing for that subdomain first and make sure it
-resolves to its own zone.
+: `EMAIL_DOMAIN` must exactly match a Cloudflare zone name in your account.
+Deployment rejects a subdomain such as `mail.example.com` when the zone is
+`example.com`. The app's custom hostname may still be a subdomain.

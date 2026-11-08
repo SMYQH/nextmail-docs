@@ -33,7 +33,9 @@ sidebar_position: 3
 
 ![启用电子邮件路由](/img/docs/enable-email-routing.jpg "在 Cloudflare 中启用电子邮件路由")
 
-3. 打开**路由规则**，编辑 **Catch-all 地址**：
+3. 执行完整的 `npm run deploy` 后，脚本会自动把 `EMAIL_DOMAIN` 对应的 Catch-all
+   规则指向 NextMail Email Worker。添加其他收件域名，或需要手动修复规则时，请打开
+   **路由规则**并编辑 **Catch-all 地址**：
    - **操作**：选择*发送到 Worker*
    - **目标位置**：选择 NextMail 部署的 `email-receiver-worker`
    - **保存**
@@ -69,7 +71,9 @@ Catch-all 邮箱负责接收发往未创建地址的邮件。皇帝按域名配�
 ## 多域名
 
 一个部署可以服务多个域名。每个域名都需要自己的邮件路由规则指向 Email Worker；
-部署脚本只自动配置 `EMAIL_DOMAIN` 对应的 Zone。
+部署脚本只自动配置 `EMAIL_DOMAIN` 对应的 Zone。每个收件域名必须与 Cloudflare Zone
+名称一致；由于 Catch-all 规则配置在 Zone 根域名上，部署脚本会拒绝填写某个 Zone
+下的子域名。
 
 皇帝还可以限制某个用户能在哪些域名下创建邮箱。没有明确限制的用户继承全部站点
 域名；清空列表会剥夺他们创建新邮箱的能力。已有邮箱不受影响。
@@ -84,5 +88,6 @@ Catch-all 邮箱负责接收发往未创建地址的邮件。皇帝按域名配�
 `email-receiver-worker`，以及该 Zone 的 DNS 是否由 Cloudflare 托管。
 
 **我收到了属于其他域名的邮件**
-: `EMAIL_DOMAIN` 必须与账号中的某个 Zone 名称完全一致。使用子域名时，请先为该
-子域名配置邮件路由，并确认它能解析到独立的同名 Zone。
+: `EMAIL_DOMAIN` 必须与账号中的某个 Cloudflare Zone 名称完全一致。如果 Zone 是
+`example.com`，部署脚本会拒绝 `mail.example.com` 这样的子域名。应用的自定义域名
+仍然可以使用子域名。

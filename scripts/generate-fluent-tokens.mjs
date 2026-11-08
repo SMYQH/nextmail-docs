@@ -49,6 +49,10 @@ const tokens = {
   '--fluent-color-stroke-inverse': 'colorNeutralStrokeOnBrand',
 
   '--fluent-color-background-overlay': 'colorBackgroundOverlay',
+  '--fluent-color-warning-background': 'colorPaletteYellowBackground1',
+  '--fluent-color-warning-border': 'colorPaletteYellowBorder1',
+  '--fluent-color-danger-background': 'colorPaletteRedBackground1',
+  '--fluent-color-danger-border': 'colorPaletteRedBorder1',
 
   '--fluent-radius-small': 'borderRadiusSmall',
   '--fluent-radius-medium': 'borderRadiusMedium',

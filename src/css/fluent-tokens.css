@@ -34,6 +34,10 @@
   --fluent-color-stroke-accessible: #616161;
   --fluent-color-stroke-inverse: #ffffff;
   --fluent-color-background-overlay: rgba(0, 0, 0, 0.4);
+  --fluent-color-warning-background: #fffef5;
+  --fluent-color-warning-border: #fef7b2;
+  --fluent-color-danger-background: #fdf6f6;
+  --fluent-color-danger-border: #f1bbbc;
   --fluent-radius-small: 2px;
   --fluent-radius-medium: 4px;
   --fluent-radius-large: 6px;
@@ -109,6 +113,10 @@
   --fluent-color-stroke-accessible: #adadad;
   --fluent-color-stroke-inverse: #292929;
   --fluent-color-background-overlay: rgba(0, 0, 0, 0.5);
+  --fluent-color-warning-background: #4c4400;
+  --fluent-color-warning-border: #fde300;
+  --fluent-color-danger-background: #3f1011;
+  --fluent-color-danger-border: #d13438;
   --fluent-radius-small: 2px;
   --fluent-radius-medium: 4px;
   --fluent-radius-large: 6px;

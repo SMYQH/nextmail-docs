@@ -9,6 +9,7 @@
 # Generated
 /.docusaurus
 /.cache-loader
+/.agents/
 
 # Misc
 .DS_Store

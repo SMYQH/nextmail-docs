@@ -37,7 +37,7 @@ At minimum, fill in:
 | `CLOUDFLARE_ACCOUNT_ID` | Your Cloudflare account ID |
 | `CLOUDFLARE_API_TOKEN` | API token with the permissions listed below |
 | `AUTH_SECRET` | Random secret used to sign sessions (`openssl rand -base64 32`) |
-| `EMAIL_DOMAIN` | The domain that receives mail, for example `mail.example.com` |
+| `EMAIL_DOMAIN` | The Cloudflare zone apex that receives mail, for example `example.com` |
 | `NEXT_PUBLIC_BASE_URL` | Public URL of the deployment, for example `https://mail.example.com` |
 
 Optional OAuth login (GitHub or Google) works when both the ID and the secret
@@ -94,14 +94,40 @@ resources are reused.
 With a custom domain the script creates the Worker route and the certificate
 automatically. Otherwise the deployment is reachable on `*.workers.dev`.
 
-Next, configure [Email routing](/getting-started/email-domain) so that mail
-actually reaches NextMail.
+The deployment script enables the catch-all rule for the zone named by
+`EMAIL_DOMAIN` and points it to the Email Worker. In the Cloudflare dashboard,
+enable Email Routing and accept its DNS records before sending a test message.
+For additional receiving domains, follow [Email domain and routing](/getting-started/email-domain)
+to configure each zone separately. `EMAIL_DOMAIN` must match a Cloudflare zone
+name exactly; a subdomain such as `mail.example.com` is not valid when the zone
+in your account is `example.com`.
 
 ## 5. Create the first account
 
 Open the deployment, sign in, and go to the profile page. If the site has no
 Emperor yet, the page offers **Initialize site owner** — confirm it and the
 first account becomes the Emperor with full access to site settings.
+
+## Verify the deployment
+
+Check these three layers separately:
+
+1. **The app is reachable** — open `NEXT_PUBLIC_BASE_URL` and sign in.
+2. **A receiving domain is configured** — open the profile page and confirm the
+   domain appears under site settings. The public configuration endpoint should
+   also return JSON:
+
+   ```bash
+   curl -fsS https://mail.example.com/api/config
+   ```
+
+3. **Inbound mail is routed** — send a test message to an address on the
+   receiving domain and confirm it appears in the catch-all mailbox or the
+   mailbox that owns that address.
+
+The app URL and the receiving domain can be different hostnames. A successful
+login only proves that the web Worker is reachable; it does not prove that
+Cloudflare Email Routing is forwarding mail to the Email Worker.
 
 ## Deploying from GitHub Actions instead
 

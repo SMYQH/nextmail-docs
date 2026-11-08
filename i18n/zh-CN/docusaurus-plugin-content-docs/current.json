@@ -1,13 +1,13 @@
 {
-  "sidebar.docsSidebar.category.Getting Started": {
+  "sidebar.docs.category.Getting Started": {
     "message": "快速上手",
     "description": "The label for category Getting Started in the docs sidebar"
   },
-  "sidebar.docsSidebar.category.Guides": {
+  "sidebar.docs.category.Guides": {
     "message": "使用指南",
     "description": "The label for category Guides in the docs sidebar"
   },
-  "sidebar.docsSidebar.category.Developers & AI Agents": {
+  "sidebar.docs.category.Developers & AI Agents": {
     "message": "开发者与 AI 代理",
     "description": "The label for category Developers & AI Agents in the docs sidebar"
   }

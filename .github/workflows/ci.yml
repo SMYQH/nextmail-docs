@@ -44,12 +44,12 @@ jobs:
 
       - name: 校验构建产物
         run: |
-          test -f build/index.html
           test -f build/en/index.html
           test -f build/zh-CN/index.html
           test -f build/en/getting-started/overview.html
           test -f build/zh-CN/getting-started/overview.html
-          test -f build/search-index.json
+          test -f build/en/search-index.json
+          test -f build/zh-CN/search-index.json
 
       - name: 上传构建产物
         uses: actions/upload-artifact@v4

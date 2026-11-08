@@ -102,7 +102,7 @@ body {
 .navbar__title {
   font-weight: var(--fluent-font-weight-semibold);
   font-size: var(--fluent-font-size-400);
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
 }
 
 .navbar__logo {
@@ -287,7 +287,7 @@ body {
 
 .theme-doc-sidebar-item-category {
   font-size: var(--fluent-font-size-200);
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--fluent-color-text-tertiary);
   font-weight: var(--fluent-font-weight-semibold);
@@ -328,7 +328,7 @@ body {
 .theme-doc-markdown h4 {
   color: var(--fluent-color-text);
   font-weight: var(--fluent-font-weight-semibold);
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   margin-top: 1.75rem;
 }
 
@@ -431,13 +431,13 @@ code[class*='language-'] {
 }
 
 .alert--warning {
-  background-color: rgba(247, 148, 22, 0.12);
-  border-left-color: #f7941e;
+  background-color: var(--fluent-color-warning-background);
+  border-left-color: var(--fluent-color-warning-border);
 }
 
 .alert--danger {
-  background-color: rgba(196, 43, 28, 0.1);
-  border-left-color: #c42b1c;
+  background-color: var(--fluent-color-danger-background);
+  border-left-color: var(--fluent-color-danger-border);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -482,7 +482,7 @@ code[class*='language-'] {
   color: var(--fluent-color-text);
   font-size: var(--fluent-font-size-200);
   font-weight: var(--fluent-font-weight-semibold);
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -532,46 +532,53 @@ img[src$='.GIF'] {
   image-rendering: auto;
 }
 
-.fluent-media {
-  margin-block: 1.25rem;
-}
-
-.fluent-media__frame {
-  background-color: var(--fluent-color-surface-alt);
-  border: 1px solid var(--fluent-color-stroke-subtle);
-  border-radius: var(--fluent-radius-xlarge);
-  box-shadow: var(--fluent-shadow-8);
-  overflow: hidden;
-}
-
-.fluent-media__caption {
-  color: var(--fluent-color-text-tertiary);
-  font-size: var(--fluent-font-size-200);
-  margin-top: 0.5rem;
-  text-align: center;
-}
-
 /* -------------------------------------------------------------------------- */
 /* Landing page                                                                  */
 /* -------------------------------------------------------------------------- */
 
 .fluent-hero {
-  background:
-    radial-gradient(
-      120% 120% at 12% 0%,
-      var(--fluent-color-brand-background-secondary) 0%,
-      transparent 55%
-    ),
-    var(--fluent-color-surface-alt);
+  background-color: var(--fluent-color-surface-alt);
   border-bottom: 1px solid var(--fluent-color-stroke-subtle);
-  padding-block: 4rem 3.5rem;
+  padding-block: 3.25rem;
+}
+
+.fluent-hero__layout {
+  align-items: center;
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+}
+
+.fluent-hero__copy {
+  min-width: 0;
+}
+
+.fluent-hero__visual {
+  margin: 0;
+  min-width: 0;
+}
+
+.fluent-hero__visual-frame {
+  background-color: var(--fluent-color-surface);
+  border: 1px solid var(--fluent-color-stroke-subtle);
+  border-radius: var(--fluent-radius-large);
+  box-shadow: var(--fluent-shadow-16);
+  overflow: hidden;
+}
+
+.fluent-hero__visual img {
+  aspect-ratio: 16 / 10;
+  display: block;
+  height: auto;
+  object-fit: cover;
+  width: 100%;
 }
 
 .fluent-hero__eyebrow {
   color: var(--fluent-color-brand-foreground);
   font-size: var(--fluent-font-size-200);
   font-weight: var(--fluent-font-weight-semibold);
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -579,7 +586,7 @@ img[src$='.GIF'] {
   color: var(--fluent-color-text);
   font-size: var(--fluent-font-size-hero-900);
   font-weight: var(--fluent-font-weight-semibold);
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   line-height: 1.1;
   margin-block: 0.5rem 1rem;
 }
@@ -598,6 +605,13 @@ img[src$='.GIF'] {
   margin-top: 1.75rem;
 }
 
+.fluent-hero__actions .button {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  min-height: 2.75rem;
+}
+
 .fluent-section {
   margin-block: 3rem;
 }
@@ -606,7 +620,7 @@ img[src$='.GIF'] {
   color: var(--fluent-color-text);
   font-size: var(--fluent-font-size-600);
   font-weight: var(--fluent-font-weight-semibold);
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   margin-bottom: 0.5rem;
 }
 
@@ -625,7 +639,7 @@ img[src$='.GIF'] {
 .fluent-path {
   background-color: var(--fluent-color-surface);
   border: 1px solid var(--fluent-color-stroke-subtle);
-  border-radius: var(--fluent-radius-xlarge);
+  border-radius: var(--fluent-radius-medium);
   box-shadow: var(--fluent-shadow-2);
   display: flex;
   flex-direction: column;
@@ -650,7 +664,7 @@ img[src$='.GIF'] {
   color: var(--fluent-color-brand-foreground);
   font-size: var(--fluent-font-size-100);
   font-weight: var(--fluent-font-weight-semibold);
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   padding: 0.15rem 0.6rem;
   text-transform: uppercase;
 }
@@ -682,6 +696,53 @@ img[src$='.GIF'] {
   font-weight: var(--fluent-font-weight-semibold);
 }
 
+.fluent-path__links a:focus-visible,
+.fluent-hero__actions a:focus-visible {
+  outline-offset: 4px;
+}
+
+@media (max-width: 996px) {
+  .fluent-hero__layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.75rem;
+  }
+
+  .fluent-hero {
+    padding-block: 2.75rem;
+  }
+
+  .fluent-hero__visual {
+    max-width: 52rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .fluent-hero {
+    padding-block: 2rem;
+  }
+
+  .fluent-hero__title {
+    font-size: var(--fluent-font-size-600);
+  }
+
+  .fluent-hero__subtitle {
+    font-size: var(--fluent-font-size-400);
+  }
+
+  .fluent-hero__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .fluent-hero__actions .button {
+    width: 100%;
+  }
+
+  .fluent-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 /* -------------------------------------------------------------------------- */
 /* Accessibility                                                                 */
 /* -------------------------------------------------------------------------- */
@@ -704,7 +765,7 @@ img[src$='.GIF'] {
 
 @media (prefers-contrast: more) {
   :root {
-    --fluent-color-stroke: #6b6b6b;
-    --fluent-color-text-secondary: #242424;
+    --fluent-color-stroke: var(--fluent-color-stroke-accessible);
+    --fluent-color-text-secondary: var(--fluent-color-text);
   }
 }
