@@ -42,7 +42,7 @@ runtime flags.
 
 Next.js development, linting and unit tests still work on Windows.
 
-Current versions: Next.js `16.4.3` and OpenNext `1.20.6`, which are inside the
+Current versions: Next.js `16.4.5` and OpenNext `1.20.16`, which are inside the
 [supported range](https://opennext.js.org/cloudflare#supported-nextjs-versions).
 Next.js 14 is no longer supported, and version problems are not solved by
 downgrading to 14 or by skipping the support check.

@@ -36,7 +36,7 @@ OpenNext Worker。不要复用 Windows 的 `node_modules` 目录。OpenNext 会�
 
 Next.js 的开发、lint 和单元测试在 Windows 上仍然可用。
 
-当前版本：Next.js `16.4.3` 与 OpenNext `1.20.6`，处于
+当前版本：Next.js `16.4.5` 与 OpenNext `1.20.16`，处于
 [适配器支持范围](https://opennext.js.org/cloudflare#supported-nextjs-versions)之内。
 Next.js 14 已不再受支持，版本问题不通过降级到 14 或跳过支持检查来解决。
 
