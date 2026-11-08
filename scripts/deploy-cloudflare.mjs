@@ -11,7 +11,10 @@ loadDeployEnv()
 requireDeployEnv(['CLOUDFLARE_API_TOKEN', 'CLOUDFLARE_ACCOUNT_ID'])
 
 const wrangler = resolve(import.meta.dirname, '../node_modules/wrangler/bin/wrangler.js')
-const result = spawnSync(process.execPath, [wrangler, 'deploy', ...process.argv.slice(2)], {
+// 必须显式指定配置：本仓库可能作为子模块位于应用仓库内，
+// 而 Wrangler 向上查找配置时优先命中 `wrangler.json`（应用仓库的生成文件）。
+const config = resolve(import.meta.dirname, '../wrangler.jsonc')
+const result = spawnSync(process.execPath, [wrangler, 'deploy', '--config', config, ...process.argv.slice(2)], {
   stdio: 'inherit',
   env: process.env,
 })
