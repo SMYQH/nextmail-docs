@@ -4,6 +4,8 @@ NextMail 的官方文档站，基于 [Docusaurus 3](https://docusaurus.io/) 构�
 
 文档站与应用仓库分离：[SMYQH/nextmail-docs](https://github.com/SMYQH/nextmail-docs)
 是本仓库，[SMYQH/nextmail](https://github.com/SMYQH/nextmail) 是应用本体。
+应用仓库通过 `docs` Git 子模块固定引用本仓库的文档版本；修改应用代码时可在应用仓库
+根目录运行 `git submodule update --init docs` 检出对应文档源文件。
 
 ## 文档结构
 

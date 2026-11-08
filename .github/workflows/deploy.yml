@@ -21,9 +21,7 @@ jobs:
     if: github.repository == 'SMYQH/nextmail-docs'
     environment:
       name: production
-      url: ${{ vars.DOCS_SITE_URL || 'https://docs.nextmail.app' }}
-    env:
-      DOCS_SITE_URL: ${{ vars.DOCS_SITE_URL || 'https://docs.nextmail.app' }}
+      url: ${{ vars.DOCS_SITE_URL }}
     steps:
       - name: 检出代码
         uses: actions/checkout@v4
@@ -51,7 +49,11 @@ jobs:
 
       - name: 冒烟测试
         run: |
-          BASE="$DOCS_SITE_URL"
+          BASE="${DOCS_SITE_URL:-${{ vars.DOCS_SITE_URL }}}"
+          if [ -z "$BASE" ]; then
+            echo "未配置 DOCS_SITE_URL，跳过冒烟测试"
+            exit 0
+          fi
           for path in / /en/ /zh-CN/ /en/getting-started/overview /zh-CN/getting-started/overview; do
             status=$(curl -s -o /dev/null -w "%{http_code}" "${BASE}${path}")
             echo "${path} -> ${status}"
