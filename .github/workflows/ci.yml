@@ -40,7 +40,7 @@ jobs:
         run: npm run typecheck
 
       - name: 构建站点
-        run: npx docusaurus build
+        run: npm run build
 
       - name: 校验构建产物
         run: |

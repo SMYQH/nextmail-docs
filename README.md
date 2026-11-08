@@ -43,6 +43,32 @@ npm start
 
 开发服务器默认监听 `http://localhost:3000`，同时提供 `/en/` 与 `/zh-CN/`。
 
+## 本地配置
+
+文档站与主仓库（NextMail 应用）使用同一套配置模型：
+
+- `.env.deploy.example` 是受版本控制的模板，只包含变量名与说明；
+- `.env.deploy` 是唯一的本地配置文件，被 Git 忽略；
+- 永远不要创建 `.env`、`.env.local` 或 `.dev.vars`——构建会直接报错；
+- GitHub Actions 只读取仓库 Secrets/Variables，不会回退到本地文件。
+
+首次使用先生成本地配置文件：
+
+```bash
+npm run config:env
+```
+
+然后编辑 `.env.deploy`：
+
+| 变量 | 说明 |
+| --- | --- |
+| `CLOUDFLARE_API_TOKEN` | 具备 Workers Scripts 写权限的 API Token |
+| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare 账号 ID |
+| `DOCS_SITE_URL` | 站点公开地址，用于生成 canonical 与 sitemap；留空使用 `https://docs.nextmail.app` |
+
+`npm start`、`npm run build`、`npm run serve` 与 `npm run deploy:cloudflare` 都会自动
+读取 `.env.deploy`；进程环境中的同名变量优先，因此 CI 注入的值不会被本地文件覆盖。
+
 常用命令：
 
 | 命令 | 说明 |
@@ -54,6 +80,7 @@ npm start
 | `npm run typecheck` | TypeScript 类型检查 |
 | `npm run tokens:generate` | 从官方 Fluent 库重新生成设计令牌 |
 | `npm run write-translations` | 生成缺失的翻译文件骨架 |
+| `npm run config:env` | 基于 `.env.deploy.example` 创建本地 `.env.deploy` |
 | `npm run deploy:cloudflare` | 发布到 Cloudflare Workers 静态资源 |
 
 > `npm start` 与 `npm run build` 会自动先执行 `tokens:generate`。
@@ -73,6 +100,9 @@ npm run build
 npm run deploy:cloudflare
 ```
 
+`npm run deploy:cloudflare` 需要 `.env.deploy`（或进程环境）中提供
+`CLOUDFLARE_API_TOKEN` 与 `CLOUDFLARE_ACCOUNT_ID`，缺少时会直接报错。
+
 GitHub Actions 会在推送到 `main` 或 `v*` 标签时自动构建并发布，配置见
 `.github/workflows/`：
 
@@ -89,10 +119,13 @@ GitHub Actions 会在推送到 `main` 或 `v*` 标签时自动构建并发布，
 | `CLOUDFLARE_ACCOUNT_ID` | Secret | Cloudflare 账号 ID |
 | `DOCS_SITE_URL` | Variable | 站点公开地址，例如 `https://docs.nextmail.app` |
 
+CI 只使用上表中的 Secrets/Variables；本地部署改用 `.env.deploy`，变量名一一对应。
+
 ### 自定义域名
 
 在 Cloudflare 控制台为 `nextmail-docs` Worker 绑定自定义域名，或在
-`wrangler.jsonc` 中增加 `routes` 配置。
+`wrangler.jsonc` 中增加 `routes` 配置，并在 `.env.deploy` 中把 `DOCS_SITE_URL`
+指向该域名。
 
 ## 许可证
 

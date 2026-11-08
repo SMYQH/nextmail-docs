@@ -24,11 +24,11 @@ yarn-error.log*
 # Environment
 .env
 .env.*
-!.env.example
+!.env.deploy.example
+.dev.vars*
 
 # Cloudflare
 .wrangler/
-.dev.vars*
 
 # Editors
 .idea/

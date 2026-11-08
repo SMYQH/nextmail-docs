@@ -48,6 +48,16 @@ Local environment limitations:
 
 CI uses `onBrokenLinks: 'throw'` and `markdown.hooks.onBrokenMarkdownLinks: 'throw'`; **any broken link will fail the build**—verify all links before committing.
 
+## Local Configuration
+
+The documentation site uses the same configuration model as the application repository:
+
+- `.env.deploy.example` is the tracked template; `.env.deploy` is the only local configuration file and is Git-ignored.
+- `scripts/deploy-env.mjs` is the single configuration entry point. It loads `.env.deploy` into the process environment and rejects legacy files (`.env`, `.env.local`, `.dev.vars`).
+- `npm run config:env` creates `.env.deploy` from the template without overwriting an existing file.
+- `npm start`, `npm run build`, `npm run serve` and `npm run deploy:cloudflare` load `.env.deploy` automatically. Values already present in the process environment win.
+- CI never reads `.env.deploy`; it uses repository secrets and variables only.
+
 ## Versioned Documentation
 
 Versioned documentation is not currently configured. To create a versioned release:

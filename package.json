@@ -4,15 +4,16 @@
   "private": true,
   "description": "NextMail documentation site (Docusaurus)",
   "scripts": {
-    "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
-    "serve": "docusaurus serve",
-    "clear": "docusaurus clear",
-    "swizzle": "docusaurus swizzle",
-    "write-translations": "docusaurus write-translations",
+    "docusaurus": "node --import ./scripts/deploy-env.mjs ./node_modules/@docusaurus/core/bin/docusaurus.mjs",
+    "start": "node --import ./scripts/deploy-env.mjs ./node_modules/@docusaurus/core/bin/docusaurus.mjs start",
+    "build": "node --import ./scripts/deploy-env.mjs ./node_modules/@docusaurus/core/bin/docusaurus.mjs build",
+    "serve": "node --import ./scripts/deploy-env.mjs ./node_modules/@docusaurus/core/bin/docusaurus.mjs serve",
+    "clear": "node --import ./scripts/deploy-env.mjs ./node_modules/@docusaurus/core/bin/docusaurus.mjs clear",
+    "swizzle": "node --import ./scripts/deploy-env.mjs ./node_modules/@docusaurus/core/bin/docusaurus.mjs swizzle",
+    "write-translations": "node --import ./scripts/deploy-env.mjs ./node_modules/@docusaurus/core/bin/docusaurus.mjs write-translations",
     "typecheck": "tsc",
-    "deploy:cloudflare": "wrangler deploy",
+    "deploy:cloudflare": "node scripts/deploy-cloudflare.mjs",
+    "config:env": "node scripts/init-deploy-env.mjs",
     "tokens:generate": "node scripts/generate-fluent-tokens.mjs",
     "prestart": "npm run tokens:generate",
     "prebuild": "npm run tokens:generate"
@@ -48,6 +49,6 @@
     ]
   },
   "engines": {
-    "node": ">=20.0"
+    "node": ">=20.12"
   }
 }

@@ -1,6 +1,20 @@
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+const DEFAULT_SITE_URL = 'https://docs.nextmail.app';
+
+/**
+ * 站点公开地址来自 `.env.deploy`（由 `scripts/deploy-env.mjs` 读入进程环境），
+ * CI 则使用同名 GitHub Actions Variable。
+ */
+const siteUrl = (process.env.DOCS_SITE_URL ?? '').trim();
+
+if (siteUrl && !/^https?:\/\/\S+$/.test(siteUrl)) {
+  throw new Error(
+    `DOCS_SITE_URL must be an absolute http(s) URL, got: ${siteUrl}`,
+  );
+}
+
 /**
  * NextMail documentation site.
  *
@@ -16,7 +30,7 @@ const config: Config = {
   tagline: 'Self-hosted temporary email on Cloudflare — OpenAPI-first.',
   favicon: 'img/logo.png',
 
-  url: process.env.DOCS_SITE_URL?.trim() || 'https://docs.nextmail.app',
+  url: siteUrl || DEFAULT_SITE_URL,
   baseUrl: '/',
 
   organizationName: 'SMYQH',
