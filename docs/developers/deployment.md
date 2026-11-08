@@ -185,8 +185,9 @@ The read-only pre-flight for WAF and Bot Management runs before the build and
 confirms the accessibility of the corresponding zone. Because Cloudflare's
 token verification endpoint does not return permission policies, `WAF: Edit`
 cannot be proven on its own — the deployment confirms that write permission by
-actually updating the project rule, after the build and after the database and
-webhook checks, but before the database migration.
+creating or updating the project rule when needed, after the build and after
+the database and webhook checks, but before the database migration. If the
+project rules already match, the deployment leaves them unchanged.
 
 :::tip
 If you create the deployment token through the API, use a separate bootstrap

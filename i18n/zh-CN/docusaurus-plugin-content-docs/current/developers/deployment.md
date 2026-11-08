@@ -152,8 +152,8 @@ npm run verify:waf
 
 WAF 与 Bot Management 的只读前置检查会在构建前确认对应 Zone 的可访问性。由于
 Cloudflare 的 Token 验证接口不返回权限策略，`WAF: Edit` 无法单独证明——部署会
-在构建完成、检查数据库与 Webhook 之后、数据库迁移之前，通过实际更新项目规则来
-确认该写权限。
+在构建完成、检查数据库与 Webhook 之后、数据库迁移之前，在需要时创建或更新项目
+规则来确认该写权限。如果项目规则已经匹配，部署会保持规则不变。
 
 :::tip
 如果通过 API 创建账户部署令牌，请使用单独具备 `Account API Tokens: Edit` 权限的
